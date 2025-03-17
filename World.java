@@ -5,7 +5,7 @@ public class World {
     private String size;
 
     public World() {
-        this.name = "";
+        this.name = "NPC Land";
         this.difficultyLevel = 1;
         this.climate = "Temperate";
         this.size = "Medium";
