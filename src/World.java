@@ -1,3 +1,5 @@
+package src;
+
 public class World {
     private String name;
     private int difficultyLevel = 1;
