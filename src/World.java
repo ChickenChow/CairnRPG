@@ -1,10 +1,11 @@
 package src;
 
 public class World {
-    private String name;
-    private int difficultyLevel = 1;
-    private String climate;
-    private String size;
+    protected String name;
+    protected int difficultyLevel = 1;
+    protected String climate;
+    protected String size;
+    //Changed fields to protected again, as this allows direct access for other classes.
 
     public World() {
         this.name = "NPC Land";
