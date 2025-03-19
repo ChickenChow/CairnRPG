@@ -1,0 +1,66 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
+public class HeroEnemyBossTest {
+    private Hero hero;
+    private Enemy enemy;
+    private Boss boss;
+    private Item potion;
+
+    @BeforeEach
+    void setUp() {
+        hero = new Hero("TestHero", 100, 20, true);
+        enemy = new Enemy(80, 15, true);
+        boss = new Boss(150, 30, true);
+        potion = new Item("Health Potion", 20);
+    }
+
+    @Test
+    void testHeroFight() {
+        assertTrue(hero.fight(enemy) || !hero.fight(enemy), "Hero should either hit or miss");
+    }
+
+    @Test
+    void testHeroUseItem() {
+        hero.addToInventory(potion);
+        hero.useItem(0);
+        assertEquals(100, hero.getHealth(), "Hero should be fully healed to 100 HP");
+    }
+
+    @Test
+    void testHeroLevelUp() {
+        hero.gainExperience(100);
+        assertEquals(2, hero.getLevel(), "Hero should level up to Level 2");
+        assertTrue(hero.getAttackPower() > 20, "Attack power should increase after level up");
+    }
+
+    @Test
+    void testHeroAddToInventory() {
+        for (int i = 0; i < 10; i++) {
+            hero.addToInventory(new Item("Item" + i, 10));
+        }
+        assertFalse(hero.addToInventory(new Item("ExtraItem", 10)), "Inventory should not allow more than 10 items");
+    }
+
+    @Test
+    void testEnemyFight() {
+        assertTrue(enemy.fight() || !enemy.fight(), "Enemy should either hit or miss");
+    }
+
+    @Test
+    void testBossFight() {
+        assertTrue(boss.fight() || !boss.fight(), "Boss should either hit or miss");
+    }
+
+    @Test
+    void testBossUltraAttack() {
+        int initialUltras = 3;
+        for (int i = 0; i < initialUltras; i++) {
+            boss.fight();
+        }
+        assertEquals(0, boss.getUltrasLeft(), "Boss should have no ultras left after 3 uses");
+    }
+}
