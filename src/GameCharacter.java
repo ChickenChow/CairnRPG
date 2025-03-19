@@ -1,10 +1,11 @@
 package src;
 
 public class GameCharacter {
-    private String name;
-    private double health;
-    private double attackPower;
-    private boolean isAlive;
+    protected String name;
+    protected double health;
+    protected double attackPower;
+    protected boolean isAlive;
+    //This makes it so that each of the subclasses, hero, enemy, and boss, can have direct access
 
     public GameCharacter(String name, double health, double attackPower, boolean isAlive) {
         this.name = name;
