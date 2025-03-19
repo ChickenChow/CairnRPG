@@ -14,6 +14,12 @@ public class GameCharacter {
         this.isAlive = isAlive;
     }
 
+    //Adding coin flip to escape
+    public boolean runAway() {
+        Random rand = new Random();
+        Return rand.nextDouble() < 0.5;
+    }
+
     public String getInfo() {
         return "Character: " + name + ", Health: " + health + ", Attack Power: " + attackPower + ", Alive: " + isAlive;
     }
