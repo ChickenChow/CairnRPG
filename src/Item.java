@@ -9,7 +9,8 @@ public class Item {
         this.healingPower = healingPower;
     }
 
-    public String getInfo() {
+    //Changed "getInfo" to "info" as it is used like this in other class examples.
+    public String info() {
         return "Item: " + name +
                 ", Healing Power: " + healingPower;
     }
